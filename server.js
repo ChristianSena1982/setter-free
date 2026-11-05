@@ -1,28 +1,26 @@
 const express = require('express');
+const googleTTS = require('google-tts-api'); // Installa con: npm install google-tts-api
 const app = express();
 
-// Middleware per leggere il corpo delle richieste in formato JSON
 app.use(express.json());
 
-// Endpoint per gestire la chiamata e generare il pitch di Vocalis
 app.post('/incoming-voice', (req, res) => {
-    // Puoi leggere eventuali dati inviati da MacroDroid (es. il nome del contatto o del ristorante)
-    const clientInput = req.body.text || "ristorante";
-    
-    console.log(`Chiamata ricevuta per il target: ${clientInput}`);
+    const textToSpeech = "Pronto, buongiorno! Parlo con il titolare del ristorante? Vi chiamo per presentarvi Vocalis, l'assistente vocale con intelligenza artificiale per le prenotazioni su WhatsApp. Vi interessa fare una prova gratuita?";
 
-    // Testo di presentazione di Vocalis ottimizzato per i ristoranti
-    const aiResponseText = "Pronto, buongiorno! Parlo con il titolare o il responsabile del ristorante? Vi chiamo per presentarvi Vocalis, il nostro assistente vocale con intelligenza artificiale che risponde automaticamente alle chiamate e gestisce le prenotazioni dei clienti su WhatsApp. Vi interesserebbe fare una prova gratuita di cinque minuti?";
+    // Genera l'URL dell'audio MP3 in italiano
+    const audioUrl = googleTTS.getAudioUrl(textToSpeech, {
+        lang: 'it',
+        slow: false,
+        host: 'https://translate.google.com',
+        timeout: 10000,
+    });
 
-    // Risposta JSON che MacroDroid catturerà e salverà nella variabile 'risposta_ai'
     res.json({
         status: "success",
-        risposta_ai: aiResponseText
+        risposta_ai: textToSpeech,
+        audio_url: audioUrl
     });
 });
 
-// Porta di ascolto (Render assegna automaticamente la porta tramite process.env.PORT)
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server Vocalis Setter in esecuzione sulla porta ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server attivo sulla porta ${PORT}`));
