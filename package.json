@@ -1,13 +1,13 @@
 {
   "name": "setter-free",
   "version": "1.0.0",
-  "description": "Setter vocale per Vocalis",
-  "main": "gemini-code-1793892286876.js",
+  "description": "Backend per automazione chiamate Vocalis",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "groq-sdk": "^0.3.3"
+    "express": "^4.18.2",
+    "google-tts-api": "^1.0.4"
   }
 }
