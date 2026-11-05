@@ -1,0 +1,13 @@
+{
+  "name": "setter-free",
+  "version": "1.0.0",
+  "description": "Setter vocale per Vocalis",
+  "main": "gemini-code-1793892286876.js",
+  "scripts": {
+    "start": "node gemini-code-1793892286876.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "groq-sdk": "^0.3.3"
+  }
+}
