@@ -4,7 +4,7 @@
   "description": "Setter vocale per Vocalis",
   "main": "gemini-code-1793892286876.js",
   "scripts": {
-    "start": "node gemini-code-1793892286876.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.19.2",
