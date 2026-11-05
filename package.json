@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "google-tts-api": "^1.0.4"
+    "google-tts-api": "^0.0.6"
   }
 }
